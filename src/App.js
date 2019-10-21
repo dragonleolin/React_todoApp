@@ -1,33 +1,27 @@
 import React from 'react';
-import {BrowserRouter as Router, Route,Switch} from "react-router-dom"
+import {BrowserRouter as Router, Route,Switch, Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import TodoApp from './components/pageScreen/TodoApp'
-// import TodoApp from './components/utilScreen/TodoApp'
-// import BootstrapTest from './components/bootstrap/BootstrapTest'
-// import EmailFormBP from './components/bootstrap/EmailFormBP'
-// import SignIn from './components/bootstrap/SignIn'
 
 // 不同頁面
 import Home from './pages/Home'
-import News from './pages/News'
-import Contact from './pages/Contact'
+import Student from './pages/Student'
 
 // 導覽列
-import MyNavBar from './pages/MyNavbar'
 
 //使用Router
 const App = () => {
-  const userStatus = "登入中"
+  
   return (
     <Router>
       <>
-      {/* 導覽列: 選單 */}
-      <MyNavBar/>
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/student'>Student</Link></li>
+        </ul>
 
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/news' component={()=> <News userStatus={userStatus} />}/>
-          <Route path='/contact' render={(props)=><Contact {...props} userStatus={userStatus}/>}/>
+          <Route path='/student/:id?' component={Student}/>
         </Switch>
       </>
     </Router>
@@ -35,21 +29,3 @@ const App = () => {
 }
 
 export default App
-
-
-//todo範例
-// function App() {
-//   return (
-//   <>
-//     {/* todo範例 */}
-//     {/* <TodoApp /> */}
-
-//     {/* bootstrap範例 */}
-//     {/* <BootstrapTest /> */}
-//     {/* <EmailFormBP /> */}
-//     <SignIn />
-//   </>
-//   );
-// }
-
-// export default App;
